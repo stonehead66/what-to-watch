@@ -1,4 +1,5 @@
 import random
+import os
 
 from cs50 import SQL
 from flask import Flask, render_template, request, session, redirect, url_for
@@ -12,12 +13,15 @@ app = Flask(__name__)
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
+app.config["SESSION_FILE_DIR"] = "/home/stonehead66/flask_session"
 
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 # Configure CS50 Library to use SQLite database
-db = SQL("sqlite:///data/movies.db")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+db_path = os.path.join(BASE_DIR, "data", "movies.db")
+db = SQL(f"sqlite:///{db_path}")
 
 # Create recommendation parameters dict (rec_param)
 @app.before_request
@@ -51,7 +55,7 @@ def actuality():
     session["rec_param"]["years"] = years
 
     return redirect(url_for("genres"))
-    
+
 @app.route("/genres", methods=["GET", "POST"])
 def genres():
     if request.method == "GET":
@@ -61,12 +65,12 @@ def genres():
     session["rec_param"]["genres"] = genres
 
     return redirect(url_for("languages"))
-    
+
 @app.route("/languages", methods=["GET", "POST"])
 def languages():
     if request.method == "GET":
         return render_template("languages.html")
-    
+
     languages = request.form.getlist("languages")
     session["rec_param"]["languages"] = languages
 
