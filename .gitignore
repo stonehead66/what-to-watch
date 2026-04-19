@@ -2,4 +2,3 @@ __pycache__
 .vscode
 data/backup/
 flask_session
-data/movies.db
