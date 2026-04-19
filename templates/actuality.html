@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    What to watch?!
+{% endblock %}
+
+{% block main %}
+    <div id="meme-config"
+        data-templates='buzz, away, chosen, dodgson, fmr, whatyear, interesting, keanu, jw, joker, noidea, morpheus, rollsafe, sparta, sohot, regret, wonka'
+        data-top="Check!"
+        data-bottom="Next question incoming...">
+    </div>
+
+    <h3 class="fs-4">Actuality:<br>
+    How old/young shall your movie be?</h3></p>
+    <br>
+
+    <form id="actuality" method="post" action="{{ url_for('actuality') }}">
+        <div class="card p-4 shadow-sm mx-auto" style="max-width: 420px;">
+            <div class="d-grid gap-3">
+                <button class="btn btn-outline-info" name="years" value="5">max. 5 years old</button>
+                <button class="btn btn-outline-info" name="years" value="10">max. 10 years old</button>
+                <button class="btn btn-outline-info" name="years" value="20">max. 20 years old</button>
+
+                <hr>
+
+                <button class="btn btn-outline-info" name="years" value="100">Skip – I don’t care</button>
+            </div>
+        </div>
+    </form>
+
+
+    <div id="response" style="display:none">
+        <img id="meme-img">
+    </div>
+    
+{% endblock %}

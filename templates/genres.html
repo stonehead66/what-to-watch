@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    What to watch?!
+{% endblock %}
+
+{% block main %}
+    <div id="meme-config"
+        data-templates='buzz, away, chosen, dodgson, fmr, whatyear, interesting, keanu, jw, joker, noidea, morpheus, rollsafe, sparta, sohot, regret, wonka'
+        data-top="You sure?!"
+        data-bottom="Well okay ... you're the boss">
+    </div>
+
+    <h3 class="fs-4">Genres:<br>
+    Which kind of movie do you want to watch? Choose one or more and click 'Continue'</h3></p>
+    <br>
+
+    <form id="genres" method="post" action="{{ url_for('genres') }}">
+        <div class="card p-4 shadow-sm mx-auto" style="max-width: 420px;">
+            <div class="d-grid gap-2">
+
+            <input type="checkbox" class="btn-check" id="genre_ac_ad" name="genres" value="Action/Adventure/Western">
+            <label class="btn btn-outline-info" for="genre_ac_ad">Action / Adventure / Western</label>
+
+            <input type="checkbox" class="btn-check" id="genre_sc_fa" name="genres" value="Scifi/Fantasy">
+            <label class="btn btn-outline-info" for="genre_sc_fa">Sci-Fi / Fantasy</label>
+
+            <input type="checkbox" class="btn-check" id="genre_co_ro" name="genres" value="Comedy/Romance">
+            <label class="btn btn-outline-info" for="genre_co_ro">Comedy / Romance</label>
+
+            <input type="checkbox" class="btn-check" id="genre_ho_my" name="genres" value="Horror/Mystery">
+            <label class="btn btn-outline-info" for="genre_ho_my">Horror / Mystery</label>
+
+            <input type="checkbox" class="btn-check" id="genre_an_fa" name="genres" value="Animation/Family">
+            <label class="btn btn-outline-info" for="genre_an_fa">Animation / Family</label>
+
+            <input type="checkbox" class="btn-check" id="genre_bi_do" name="genres" value="Biography/Documentary/Sport">
+            <label class="btn btn-outline-info" for="genre_bi_do">Biography / Documentary / Sport</label>
+
+            <input type="checkbox" class="btn-check" id="genre_cr_th" name="genres" value="Crime/Thriller">
+            <label class="btn btn-outline-info" for="genre_cr_th">Crime / Thriller</label>
+
+            <input type="checkbox" class="btn-check" id="genre_dr" name="genres" value="Drama">
+            <label class="btn btn-outline-info" for="genre_dr">Drama</label>
+
+            <input type="checkbox" class="btn-check" id="genre_mu_mu" name="genres" value="Music/Musical">
+            <label class="btn btn-outline-info" for="genre_mu_mu">Music / Musical</label>
+
+            <hr>
+
+            <input type="checkbox" id="genre_all" name="genres" value="ALL" hidden>
+            <button type="submit" class="btn btn-outline-info" data-skip-all="genre_all">Give me anything! Skippety skip!</button>
+
+            <button type="submit" class="btn btn-info btn-lg mt-3 special-button">Continue</button>
+
+            </div>
+        </div>
+
+    </form>
+    <br>
+
+    <div id="response" style="display:none">
+        <img id="meme-img">
+    </div>
+
+{% endblock %}

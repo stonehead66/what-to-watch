@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    What to watch?!
+{% endblock %}
+
+{% block main %}
+    <div id="meme-config"
+        data-templates='buzz, away, chosen, dodgson, fmr, whatyear, interesting, keanu, jw, joker, noidea, morpheus, rollsafe, sparta, sohot, regret, wonka'
+        data-top="OK!"
+        data-bottom="Get ready for your MOVIE!">
+    </div>
+
+    <h3 class="fs-4">Rating:<br>
+    Which imdb-rating should the movie have?</h3></p>
+    <br>
+
+    <form id="ratings" method="post" action="{{ url_for('ratings') }}">
+        <div class="card p-4 shadow-sm mx-auto" style="max-width: 420px;">
+            <div class="d-grid gap-3">
+                <button class="btn btn-outline-info" name="rating" placeholder="min. 8.0" value="8.0">Only the best (min. 8.0)!</button>
+                <button class="btn btn-outline-info" name="rating" placeholder="min. 6.5" value="6.5">At least above average (min. 6.5)</button>
+                <button class="btn btn-outline-info" name="rating" placeholder="min. 5.0" value="5.0">Mediocre is fine (min. 5.0)</button>
+
+                <hr>
+
+                <button class="btn btn-outline-info" name="rating" placeholder="Skip rating filter" value="0">I watch even the shittiest shit - SKIP!</button>
+            </div>
+        </div>
+    </form>
+    <br>
+
+    <div id="response" style="display:none">
+        <img id="meme-img">
+    </div>
+    
+{% endblock %}

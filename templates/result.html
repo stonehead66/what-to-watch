@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    What to watch?!
+{% endblock %}
+
+{% block main %}
+    {% if no_result %}
+    <div class="alert alert-warning text-center fw-bold fs-4 d-inline-block">
+        <p class="display-6 mb-0">
+        <b>Sorry, no matching movies found. Please try again:</b><br>
+        <a class="btn btn-info btn-lg btn-block special-button" href="{{ url_for('index') }}"><b>Try again</b></a></p>
+    </div>
+    {% else %}
+    <div class="alert alert-warning text-center fw-bold fs-4 pulse d-inline-block">
+        <p class="display-6 mb-0"><b>🎬 {{ recomm.primaryTitle }}</b> 🎬<br> 
+            ({{ recomm.startYear }}) ({{ recomm.averageRating }})</p>
+    </div>
+    <br>    
+    <p class="links">Watch trailer on YouTube:<br>
+    <a href="https://www.youtube.com/results?search_query={{ recomm.primaryTitle | urlencode }}+trailer" class="btn-youtube" target="_blank">YouTube</a></p>
+    <p class="links">More information on Imdb:<br>
+    <a href="https://www.imdb.com/title/{{ recomm.tconst }}" class="imdb-button" target="_blank">Imdb</a></p>
+    <p class="links">More information on TMDb:<br>
+    <a href="https://www.themoviedb.org/search?query={{ recomm.primaryTitle }}" class="tmdb-button" target="_blank">TMDb</a></p>
+    <p class="links">Link to TPB:<br>
+    <a href="https://thepiratebay.bond/search/{{ recomm.primaryTitle }}" class="tpb-button" target="_blank">TPB</a></p>
+
+    <p class="sth-else">Want sth else? Click the button below or just reload this page ;)</p>
+    <form method="post" action="{{ url_for('result') }}">
+        <button type="submit" class="btn btn-info btn-lg btn-block special-button" name="recomm_alt" placeholder="alternative recommendation"><b>Give me another movie!</b></button>
+    </form>
+    <br>
+
+    <details class="params-box">
+        <summary>Your choices/search parameters:</summary>
+            <ul class="list-group list-group-flush mt-2">
+            <li class="list-group-item border-0 py-1">Actuality: max. {{ years }} years old</li>
+            <li class="list-group-item border-0 py-1">Genre(s):
+                {% if not genres %}Any{% else %}{{ genres | join(', ') }}{% endif %}</li>
+            <li class="list-group-item border-0 py-1">Language(s):
+                {% if not languages %}Any{% else %}{{ languages | map('upper') | join(', ') }}{% endif %}</li>
+            <li class="list-group-item border-0 py-1">IMDb rating: &gt; {{ rating }}</li>
+            </ul>
+    </details>
+    {% endif %}
+
+{% endblock %}
+
+{% block extra_footer %}
+    <footer class="text-center mt-auto py-3 border-top">
+        <small class="text-body-secondary">
+            <b>Disclaimer:</b> This app was made as a final project of the CS50 course and is for private use only.
+            Data is provided by <a href="https://www.imdb.com/" target="_blank" class="link-secondary">IMDb</a>
+            and <a href="https://www.themoviedb.org/" target="_blank" class="link-secondary">TMDb</a><br>
+            If you like the app or have suggestions for improvement, please leave feedback
+            <a href="mailto:a-steininger@outlook.com" class="link-secondary">here</a>.<br>
+        </small>
+    </footer>
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    What to watch?!
+{% endblock %}
+
+{% block main %}
+    <div id="meme-config"
+        data-templates='buzz, away, chosen, dodgson, fmr, whatyear, interesting, keanu, jw, joker, noidea, morpheus, rollsafe, sparta, sohot, regret, wonka'
+        data-top="Allora, parfait - muchas Dank!"
+        data-bottom="Almost done...">
+    </div>
+
+    <h3 class="fs-4">Language:<br>
+    What language should the movie be in? Choose one or more and click 'Continue'</h3></p>
+    <br>
+
+    <form id="languages" method="post" action="{{ url_for('languages') }}">
+        <div class="card p-4 shadow-sm mx-auto" style="max-width: 420px;">
+            <div class="d-grid gap-2">
+
+            <input type="checkbox" class="btn-check" id="lang_en" name="languages" value="en">
+            <label class="btn btn-outline-info" for="lang_en">English</label>
+
+            <input type="checkbox" class="btn-check" id="lang_de" name="languages" value="de">
+            <label class="btn btn-outline-info" for="lang_de">German</label>
+
+            <input type="checkbox" class="btn-check" id="lang_es" name="languages" value="es">
+            <label class="btn btn-outline-info" for="lang_es">Spanish</label>
+
+            <input type="checkbox" class="btn-check" id="lang_fr" name="languages" value="fr">
+            <label class="btn btn-outline-info" for="lang_fr">French</label>
+
+            <input type="checkbox" class="btn-check" id="lang_ja" name="languages" value="ja">
+            <label class="btn btn-outline-info" for="lang_ja">Japanese</label>
+
+            <input type="checkbox" class="btn-check" id="lang_it" name="languages" value="it">
+            <label class="btn btn-outline-info" for="lang_it">Italian</label>
+
+            <input type="checkbox" class="btn-check" id="lang_hi" name="languages" value="hi">
+            <label class="btn btn-outline-info" for="lang_hi">Hindi</label>
+
+            <hr>
+
+            <input type="checkbox" id="lang_all" name="languages" value="ALL" hidden>
+            <button type="submit" class="btn btn-outline-info" data-skip-all="lang_all">Whatever! Ever heard of sth called subtitles?!</button>
+
+            <button type="submit" class="btn btn-info btn-lg mt-3 special-button">Continue</button>
+
+            </div>
+        </div>
+
+    </form>
+    <br>
+
+    <div id="response" style="display:none">
+        <img id="meme-img">
+    </div>
+
+{% endblock %}

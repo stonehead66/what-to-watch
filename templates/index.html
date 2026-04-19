@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block body_class %}home-bg{% endblock %}
+
+{% block title %}
+    Main
+{% endblock %}
+
+{% block main %}
+  <div class="index-main-container-bg py-5">
+    <div class="jumbotron text-center">
+      <h1><b>What to watch?!</b></h1><br>
+
+      <p class="lead"><b>
+        This web-app is designed to help you find a random movie to watch based on your preferences.<br>
+        You only have to answer 4 simple questions – even skipping some is possible!<br>
+        After submitting your answers, you will get a random movie suggestion that fits your criteria.
+      </b></p>
+    </div>
+  </div>
+
+  <div class="text-center mt-4">
+    <a class="btn btn-primary btn-lg" href="{{ url_for('actuality') }}">
+      Start
+    </a>
+  </div>
+
+<div id="response" style="display:none">
+    <img id="meme-img">
+</div>
+
+{% endblock %}
+
+{% block extra_footer %}
+    <footer class="text-center mt-auto py-3 border-top">
+        <small class="text-body-secondary">
+            <b>Disclaimer:</b> This app was made as a final project of the CS50 course and is for private use only.
+            Data is provided by <a href="https://www.imdb.com/" target="_blank" class="link-secondary">IMDb</a>
+            and <a href="https://www.themoviedb.org/" target="_blank" class="link-secondary">TMDb</a><br>
+            If you like the app or have suggestions for improvement, please leave feedback
+            <a href="mailto:mailto:a-steininger@outlook.com" class="link-secondary">here</a>.<br>
+            Picture credits: <a href="https://pixabay.com/de/users/wernerredlich-6172061/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=8569119">Werner Redlich</a> on <a href="https://pixabay.com/de//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=8569119">Pixabay</a>
+        </small>
+    </footer>
+
+{% endblock %}
+
+
+
