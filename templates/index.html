@@ -16,12 +16,17 @@
         You only have to answer 4 simple questions – even skipping some is possible!<br>
         After submitting your answers, you will get a random movie suggestion that fits your criteria.
       </b></p>
+          <a class="btn btn-primary btn-lg" href="{{ url_for('actuality') }}">
+      ⚡ Let's go! ⚡
+    </a>
     </div>
   </div>
 
-  <div class="text-center mt-4">
-    <a class="btn btn-primary btn-lg" href="{{ url_for('actuality') }}">
-      Start
+  <div class="index-main-container-bg py-2">
+    <h2><b>OR</b></h2>
+      <p class="lead"><b>get a completely random movie:</b></p>
+    <a class="btn btn-primary btn-lg" href="{{ url_for('random_shortcut') }}">
+      🎲 Random pick 🎲
     </a>
   </div>
 

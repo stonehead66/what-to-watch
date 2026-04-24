@@ -2,3 +2,4 @@ __pycache__
 .vscode
 data/backup/
 flask_session
+to_do.txt

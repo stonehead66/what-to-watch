@@ -27,21 +27,26 @@
     <a href="https://thepiratebay.bond/search/{{ recomm.primaryTitle }}" class="tpb-button" target="_blank">TPB</a></p>
 
     <p class="sth-else">Want sth else? Click the button below or just reload this page ;)</p>
-    <form method="post" action="{{ url_for('result') }}">
-        <button type="submit" class="btn btn-info btn-lg btn-block special-button" name="recomm_alt" placeholder="alternative recommendation"><b>Give me another movie!</b></button>
-    </form>
+        <a href="{{ url_for('result') }}" class="btn btn-info btn-lg btn-block special-button">
+            <b>Give me another movie!</b>
+        </a>
     <br>
 
     <details class="params-box">
         <summary>Your choices/search parameters:</summary>
+
+        {% if random_mode %}
             <ul class="list-group list-group-flush mt-2">
-            <li class="list-group-item border-0 py-1">Actuality: max. {{ years }} years old</li>
-            <li class="list-group-item border-0 py-1">Genre(s):
-                {% if not genres %}Any{% else %}{{ genres | join(', ') }}{% endif %}</li>
-            <li class="list-group-item border-0 py-1">Language(s):
-                {% if not languages %}Any{% else %}{{ languages | map('upper') | join(', ') }}{% endif %}</li>
-            <li class="list-group-item border-0 py-1">IMDb rating: &gt; {{ rating }}</li>
+                <li class="list-group-item border-0 py-1">Random mode: no filters</li>
             </ul>
+        {% else %}
+            <ul class="list-group list-group-flush mt-2">
+                <li class="list-group-item border-0 py-1">Actuality: max. {{ years }} years old</li>
+                <li class="list-group-item border-0 py-1">Genre(s): {% if not genres %}Any{% else %}{{ genres | join(', ') }}{% endif %}</li>
+                <li class="list-group-item border-0 py-1">Language(s): {% if not languages %}Any{% else %}{{ languages | map('upper') | join(', ') }}{% endif %}</li>
+                <li class="list-group-item border-0 py-1">IMDb rating: &gt; {{ rating }}</li>
+            </ul>
+        {% endif %}
     </details>
     {% endif %}
 
